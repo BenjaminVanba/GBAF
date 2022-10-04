@@ -84,3 +84,50 @@ else{// We need to check if the account with that username exists.
 }
 }
 
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Inscription</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+		<img src="logoGBAF.jpg" class="img5">
+	</head>
+	<body>
+		<div class="register">
+			<h1>Inscription</h1>
+			<?php foreach($error as $err):?>
+			<span> <?=$err ; ?> </span>
+			<?php endforeach; ?>
+			<form method="post" autocomplete="off">
+				<label for="username">
+					<i class=""></i>
+				</label>
+				<input type="text" name="username" placeholder="Nom d'utilisateur" value="<?=$user;?>" id="username" required>
+				<label for="password">
+					<i class=""></i>
+				</label>
+				<input type="password" name="password" placeholder="Mot de passe" value="<?=$mdp;?>" id="password" required>
+				<label for="email">
+					<i class=""></i>
+				</label>
+				<input type="email" name="email" placeholder="Email" value="<?=$mail;?>" id="email" required>
+				<div class= "test55">
+				<label for="Question">Selectionnez une question secrete</label>
+				<i class=""></i>
+				<select name="Question">
+					<option value="Votre surnom etant enfant">Votre surnom etant enfant</option>
+					<option value="Nom de jeune fille de votre mere">Nom de jeune fille de votre mere</option>
+				</select>
+				</div>
+				<label for="Reponse">
+					<i class=""></i>
+				</label>
+				<input type="text" name="Reponse" placeholder="Reponse a la question secrete" value="<?=$Reponse;?>" id="Reponse" required>
+				
+				<input type="submit" value="Valider">
+			</form>
+		</div>
+		<p class="centre">Vous avez déjà un compte ? <a href="index.html">Connectez-vous ici ! </a></p>
+	</body>
+</html>
