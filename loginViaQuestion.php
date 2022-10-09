@@ -30,5 +30,12 @@
 			</form>
 		</div>
 		<p class="centre">Pas de compte ? <a href="register.php">Créez-en un ici </a></p>
+		<footer class="main_footer center_text ptb_2">
+			<div class="container">
+			<p><a href="Mention.php">Mention légale</a></p>
+			<p><a href="Contact.php"> Contact</a></p>
+		</div>
+		
+		</footer>
 	</body>
 </html>

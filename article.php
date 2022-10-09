@@ -29,22 +29,27 @@ if (!isset($_SESSION['loggedin'])) {
 	   die('Erreur');
 	}
 	?>
+	<!-- Système de like --> 
 	<!DOCTYPE html>
 	<html>
 	<head>
     <?php include("header.php"); ?>
-	   <title>Accueil</title>
+	<?php include("footer.php"); ?>
+	<link href="styleHome.css" rel="stylesheet" type="text/css">
+	   <title>Articles</title>
 	   <meta charset="utf-8">
 	</head>
 	<body>
+	<img src="<?= $picture ?> " class="imageTabl" alt="">
 		<div class="articles">
-			<img src="<?= $picture ?> " alt="">
 	   <h1><?= $titre ?></h1><br>
 	   <p><?= $contenu ?></p>
 	   </div>
+	   <div class= "articles">
 	   <a href="action.php?t=1&id=<?= $id ?>">J'aime</a> (<?= $likes ?>)
 	   <br />
-	   <a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas</a> (<?= $dislikes ?>) 
+	   <a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas</a> (<?= $dislikes ?>)
+	</div>
 	</body>
 	</html>
 	
@@ -77,28 +82,30 @@ if (!isset($_SESSION['loggedin'])) {
 	$showcomment = $bdd->prepare("SELECT count(*) FROM commentaires WHERE id_article = ? AND pseudo='$username' ");
 	$showcomment->execute([$id]);
 	$count = $showcomment->fetchColumn();
-	echo $count;
 	if($count<1){
 	
 
 	 ?> 
 	<br />
+	<div class="articles">
 	<h2>Commentaires:</h2>
 	<form method="POST">
 	<b><?=$_SESSION['name']?></b><br />
 	   <textarea name="commentaire" placeholder="Votre commentaire..."></textarea><br />
 	   <input type="submit" value="Poster mon commentaire" name="submit_commentaire" />
+	   </div>
 	</form><?php } ?>
-
-
-
 	
+
+
+	<div class= "articles">
+
 	<?php if(isset($c_msg)) { echo $c_msg; } ?>
 	<br /><br />
 	<?php while($c = $commentaires->fetch()) { ?>
-	   <?= $c['date'] ?><b>:<?= $c['pseudo'] ?>:</b> <?= $c['commentaire'] ?><br />
+		<div class="cadre articles"><b><?= $c['pseudo'] ?></b><br><i><?= $c['date'] ?></i><br><br><?= $c['commentaire'] ?><br /></div>
 	   <?php } ?>
+	</div>
 	<?php
 	}
 	?>
-    

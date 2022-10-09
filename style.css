@@ -8,7 +8,15 @@
 body {
   	background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(247, 144, 144));
   	margin: 0;
+	position:relative;
+    min-height: 100%;
+    padding-bottom: 6.74rem;
+    box-sizing: inherit;
 }
+html {
+    height: 100%;
+    box-sizing: border-box;
+  }
 .register {
   	width: 400px;
   	background-color: #ffffff;
@@ -193,4 +201,14 @@ body.loggedin {
   }
   .centre {
 	text-align: center;
+  }
+  
+  .stylephp {
+	text-align: center;
+	position: relative;
+	top : 155px;
+	font-weight: bold;
+  }
+  .imageart {
+	width:30%;
   }

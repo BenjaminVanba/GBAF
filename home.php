@@ -12,9 +12,9 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC');
 
 <html>
 	<head>
-		
+		<title>Accueil</title>
 	<?php include("header.php"); ?>
-
+  <?php include("footer.php"); ?>
 	</head>
 
 	
@@ -39,14 +39,39 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC');
   <img src="Landscape.jpeg" class="img2" alt=""><br><br>
   
   <hr class="center">
-    <div class="center">
-<ul>
-	      <?php while($a = $articles->fetch()) { ?>
-	      <li><a href="article.php?id=<?= $a['id'] ?>"><?= $a['titre'] ?></a></li>
-	      <?php } ?>
-	   <ul>
-        </div>
-        <p><a href="edition.php">edition</a></p>
+  <br>
+  <table style="width:50%">
+  <tr class="center">
+    <th>
+    <img src="CDE.png" class="imageTabl" alt="">
+      La CDE (Chambre Des Entrepreneurs) accompagne les entreprises dans leurs démarches de formation...
+      <p><a href="article.php?id=4">Lire la suite</a></p>
+    </th>
+    
+  </tr>
+  <tr>
+    <th> 
+      <img src="Dsa_france.png" class="imageTabl" alt="">
+    Dsa France Dsa France accélère la croissance du territoire et s’engage avec les collectivités territoriales...
+      <p><a href="article.php?id=3">Lire la suite</a></p>
+    </th>
+  </tr>
+  <tr>
+    <th> 
+      <img src="protectpeople.png" class="imageTabl" alt="">
+    Protectpeople finance la solidarité nationale. Nous appliquons le principe édifié par ...
+      <p><a href="article.php?id=2">Lire la suite</a></p>
+    </th>
+  </tr>
+  <tr>
+    <th>
+    <img src="formation_co.png" class="imageTabl" alt="">
+Formation&co Formation&co est une association française présente sur tout le territoire ...
+      <p><a href="article.php?id=1">Lire la suite</a></p>
+    </th>
+  </tr>
+</table>
+        
 </body>
 
 </html>

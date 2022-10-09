@@ -28,13 +28,13 @@ if (!empty($_POST)) {
 	
 	// Could not get the data that should have been sent.
 	if (strlen($post['password']) > 20 || strlen($post['password']) < 5) {
-		$error[] = 'Password must be between 5 and 20 characters long!';
+		$error[] = 'Le mot de passe doit contenir entre 5 et 20 caractères';
 	}
 	if (!filter_var($post['email'], FILTER_VALIDATE_EMAIL)) {
 		$error[] = 'Email is not valid!';
 	}
 	if (strlen($post['username']) > 20 || strlen($post['username']) < 5) {
-		$error[] = 'Username must be between 5 and 20 characters long!';
+		$error[] = 'le nom d\'utilisateur doit contenir entre 5 et 20 caractères';
 	}
 	if (!isset($post['Question'])){
 		$error[]='Veuillez choisir une question secrete ';
@@ -60,7 +60,7 @@ else{// We need to check if the account with that username exists.
 		// Store the result so we can check if the account exists in the database.
 		if ($stmt->num_rows > 0) {
 			// Username already exists
-			echo 'Username exists, please choose another!';
+			echo "<p class='stylephp'>Utilisateur déjà existant.</p>";
 		} else {
 			// Username doesnt exists, insert new account
 	if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email,Question, Reponse ) VALUES (?, ?, ?, ?, ?)')) {
@@ -69,7 +69,7 @@ else{// We need to check if the account with that username exists.
 		$reponse = password_hash($post['Reponse'], PASSWORD_DEFAULT);
 		$stmt->bind_param('sssss', $post['username'], $password, $post['email'], $post['Question']);
 		$stmt->execute();
-		echo 'You have successfully registered, you can now login!';
+		echo "<p class='stylephp'>Enregistrement réussi , vous pouvez vous connecter.</p>";
 	} else {
 		// Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
 		echo 'Could not prepare statement!';
@@ -123,11 +123,18 @@ else{// We need to check if the account with that username exists.
 				<label for="Reponse">
 					<i class=""></i>
 				</label>
-				<input type="text" name="Reponse" placeholder="Reponse a la question secrete" value="<?=$Reponse;?>" id="Reponse" required>
+				<input type="text" name="Reponse" placeholder="Reponse a la question secrete" id="Reponse" required>
 				
 				<input type="submit" value="Valider">
 			</form>
 		</div>
 		<p class="centre">Vous avez déjà un compte ? <a href="index.html">Connectez-vous ici ! </a></p>
+		<footer class="main_footer center_text ptb_2">
+			<div class="container">
+			<p><a href="Mention.php">Mention légale</a></p>
+			<p><a href="Contact.php"> Contact</a></p>
+		</div>
+		
+		</footer>
 	</body>
 </html>
