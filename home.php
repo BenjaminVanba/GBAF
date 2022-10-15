@@ -12,15 +12,17 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC');
 
 <html>
 	<head>
-		<title>Accueil</title>
-	<?php include("header.php"); ?>
-  <?php include("footer.php"); ?>
+		<meta charset="utf-8">
+
+		<link href="styleHome.css" rel="stylesheet" type="text/css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
-
 	
-<body>
 
-	<br><h1 class="center"> <u>Qui sommes nous ?</u></h1>
+<body>
+<?php include("header.php"); ?>
+	<h1 class="center"> <u>Qui sommes nous ?</u></h1>
 
 <div class="center">
 	<br><p> Le Groupement Banque Assurance Français (GBAF) est une fédération
@@ -31,15 +33,15 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC');
     <li>Crédit Agricole</li>
     <li>Crédit Mutuel-CIC</li>
     <li>Société Générale</li>
-    <li>La banque Postale</li><br><br>
+    <li>La banque Postale</li>
   </ul>
 
 </div>
 
-  <img src="Landscape.jpeg" class="img2" alt=""><br><br>
+  <img src="Landscape.jpeg" class="img2" alt="">
   
   <hr class="center">
-  <br>
+  
   <table style="width:50%">
   <tr class="center">
     <th>
@@ -71,7 +73,7 @@ Formation&co Formation&co est une association française présente sur tout le t
     </th>
   </tr>
 </table>
-        
+<?php include("footer.php"); ?>   
 </body>
 
 </html>

@@ -33,13 +33,12 @@ if (!isset($_SESSION['loggedin'])) {
 	<!DOCTYPE html>
 	<html>
 	<head>
-    <?php include("header.php"); ?>
-	<?php include("footer.php"); ?>
 	<link href="styleHome.css" rel="stylesheet" type="text/css">
 	   <title>Articles</title>
 	   <meta charset="utf-8">
 	</head>
 	<body>
+	<?php include("header.php"); ?>
 	<img src="<?= $picture ?> " class="imageTabl" alt="">
 		<div class="articles">
 	   <h1><?= $titre ?></h1><br>
@@ -50,6 +49,7 @@ if (!isset($_SESSION['loggedin'])) {
 	   <br />
 	   <a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas</a> (<?= $dislikes ?>)
 	</div>
+	<?php include("footer.php"); ?>
 	</body>
 	</html>
 	

@@ -39,10 +39,9 @@
 	   <head>
 	      <title>Edition profil</title>
 	      <meta charset="utf-8">
-          <?php include("header.php"); ?>
-		  <?php include("footer.php"); ?>
 	   </head>
 	   <body>
+	   <?php include("header.php"); ?>
 	      <div align="center">
 	         <h2>Edition de mon profil</h2>
 	         <div align="left">
@@ -60,6 +59,7 @@
 	            <?php if(isset($msg)) { echo $msg; } ?>
 	         </div>
 	      </div>
+		  <?php include("footer.php"); ?>
 	   </body>
 	</html>
 	<?php   

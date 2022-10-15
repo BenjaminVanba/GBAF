@@ -23,7 +23,7 @@
   }
 
 .img3 {
-    width: 4%;
+    width: 25%;
     height: auto;
     padding-left: 1%;
   }
@@ -33,23 +33,24 @@
     margin-left: auto;
     display: flex;
     margin-right: auto;
+    padding-bottom: 50px;
   }
   
   .center{
     text-align: center;
     margin-top: 20px;
+    padding-bottom: 14px;
   }
   
   .topright{
-    position: absolute;
-    top: 8px;
-    right: 40px;
     font-size: 15px;
+    margin-right: 3%;
   }
   
   header { 
     border-bottom: 2px solid black;
-  
+  display: flex;
+  justify-content: space-between;
   }
 
  hr.center {
