@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Question Secrete</title>
-        <link href="style.css" rel="stylesheet" type="text/css">
-		<img src="logoGBAF.jpg" class="img5">
+        <link href="Style/style.css" rel="stylesheet" type="text/css">
+		<img src="IMG/logoGBAF.jpg" class="img5">
 	</head>
 	<body>
 		<div class="login">

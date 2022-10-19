@@ -29,35 +29,31 @@ if (!isset($_SESSION['loggedin'])) {
 	   die('Erreur');
 	}
 	?>
+
 	<!-- Système de like --> 
 	<!DOCTYPE html>
-	<html>
-	<head>
-	<link href="styleHome.css" rel="stylesheet" type="text/css">
-	   <title>Articles</title>
-	   <meta charset="utf-8">
-	</head>
-	<body>
-	<?php include("header.php"); ?>
-	<img src="<?= $picture ?> " class="imageTabl" alt="">
-		<div class="articles">
-	   <h1><?= $titre ?></h1><br>
-	   <p><?= $contenu ?></p>
-	   </div>
-	   <div class= "articles">
-	   <a href="action.php?t=1&id=<?= $id ?>">J'aime</a> (<?= $likes ?>)
-	   <br />
-	   <a href="action.php?t=2&id=<?= $id ?>">Je n'aime pas</a> (<?= $dislikes ?>)
-	</div>
-	<?php include("footer.php"); ?>
-	</body>
+	<html lang="fr">
+		<head>
+			<title>Articles</title>
+			<meta charset="utf-8">
+		</head>
+		<body>
+			<?php include("header.php"); ?>
+			<img src="<?= $picture ?> " class="imageTabl" alt="">
+			<div class="articles">
+				<h1><?= $titre ?></h1><br>
+				<p><?= $contenu ?></p>
+			</div>
+			<div class= "like">
+				<a href="action.php?t=1&id=<?= $id ?>"><img src="IMG/ThumbsUp.png" alt="ThumbsUp" class="Thumbs"></a>(<?= $likes ?>)
+				<a href="action.php?t=2&id=<?= $id ?>"><img src="IMG/ThumbsDown.png" alt="ThumbsDown" class="Thumbs"></a>(<?= $dislikes ?>)
+			</div>
+			<?php include("footer.php"); ?>
+		</body>
 	</html>
-	
-	<meta charset="utf-8" />
 	
 	<?php
 	// Section commentaire 
-	
 	if(isset($_GET['id']) AND !empty($_GET['id'])) {
 	   $getid = htmlspecialchars($_GET['id']);
 	   $article = $bdd->prepare('SELECT * FROM articles WHERE id = ?');
@@ -83,28 +79,25 @@ if (!isset($_SESSION['loggedin'])) {
 	$showcomment->execute([$id]);
 	$count = $showcomment->fetchColumn();
 	if($count<1){
-	
-
-	 ?> 
-	<br />
-	<div class="articles">
-	<h2>Commentaires:</h2>
-	<form method="POST">
-	<b><?=$_SESSION['name']?></b><br />
-	   <textarea name="commentaire" placeholder="Votre commentaire..."></textarea><br />
-	   <input type="submit" value="Poster mon commentaire" name="submit_commentaire" />
-	   </div>
-	</form><?php } ?>
-	
-
-
+		?> 
+	<div class="Comm">
+		<form method="POST">
+			<textarea name="commentaire" placeholder="Nouveau commentaire"></textarea><br />
+			<input type="submit" value="Poster mon commentaire" name="submit_commentaire" />
+	</div>
+		</form><?php } ?>
+	<?php 
+	$NombreCommentaire = $bdd->prepare("SELECT count(*) FROM commentaires WHERE id_article = ?");
+	$NombreCommentaire->execute([$id]);
+	$count = $NombreCommentaire->fetchColumn();
+	echo "<p class='NbrComm'> $count Commentaire(s)</p>"; 
+	?> 
 	<div class= "articles">
-
-	<?php if(isset($c_msg)) { echo $c_msg; } ?>
-	<br /><br />
-	<?php while($c = $commentaires->fetch()) { ?>
-		<div class="cadre articles"><b><?= $c['pseudo'] ?></b><br><i><?= $c['date'] ?></i><br><br><?= $c['commentaire'] ?><br /></div>
-	   <?php } ?>
+		<?php if(isset($c_msg)) { echo $c_msg; } ?>
+		<br /><br />
+		<?php while($c = $commentaires->fetch()) { ?>
+			<div class="cadre articles"><b><?= $c['pseudo'] ?></b><br><i><?= $c['date'] ?></i><br><br><?= $c['commentaire'] ?><br /></div>
+			<?php } ?>
 	</div>
 	<?php
 	}
