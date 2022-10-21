@@ -126,11 +126,17 @@
   }
   
   .imageTabl {
-    display: flex;
+    width: 300px;
+    display:block;
+    margin-top: 25px;
+    margin-left: 25px;
+  }
+  .imgArticle {
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
-    padding: 50px;
+    width: 15%;
+    padding-top: 100px;
   }
 
   .cadre {
@@ -153,4 +159,32 @@
     right: 0;
     left: 0;
     bottom: 0;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+  .texttabl {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    text-align: left;
+  }
+  .titretabl {
+    padding-bottom: 30px;
+    font-size: 30px;
+    padding-top: 30px;
+  }
+  .button {
+    background-color: #ec8888;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
   }

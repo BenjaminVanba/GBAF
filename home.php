@@ -31,34 +31,53 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC');
         </ul>
     </div>
       <img src="IMG/Landscape.jpeg" class="img2" alt="">
-      <hr class="center">
-    <table style="width:50%">
+      <table style="width:50%">
       <tr class="center">
         <th>
-          <img src="IMG/CDE.png" class="imageTabl" alt="">
-          La CDE (Chambre Des Entrepreneurs) accompagne les entreprises dans leurs démarches de formation...
-          <p><a href="article.php?id=4">Lire la suite</a></p>
+          <div class="container">
+            <img src="IMG/CDE.png" class="imageTabl" alt="">
+            <div class ="texttabl">
+              <h3 class="titretabl">Chambre Des Entrepreneurs</h3>
+              <p> La CDE (Chambre Des Entrepreneurs) accompagne les entreprises dans leurs démarches de formation... </p>
+            </div>
+          </div>
+          <a href="article.php?id=4" class="button">Lire la suite</a>
         </th>
       </tr>
       <tr>
         <th> 
-          <img src="IMG/Dsa_france.png" class="imageTabl" alt="">
-          Dsa France Dsa France accélère la croissance du territoire et s’engage avec les collectivités territoriales...
-          <p><a href="article.php?id=3">Lire la suite</a></p>
+          <div class="container">
+            <img src="IMG/Dsa_france.png" class="imageTabl" alt="">
+            <div class ="texttabl">
+              <h3 class="titretabl">DSA France</h3>
+              <p> Dsa France Dsa France accélère la croissance du territoire et s’engage avec les collectivités territoriales... </p>
+            </div>
+          </div>
+          <a href="article.php?id=3" class="button">Lire la suite</a>
         </th>
       </tr>
       <tr>
         <th>
-          <img src="IMG/protectpeople.png" class="imageTabl" alt="">
-          Protectpeople finance la solidarité nationale. Nous appliquons le principe édifié par ...
-          <p><a href="article.php?id=2">Lire la suite</a></p>
+          <div class="container">
+            <img src="IMG/protectpeople.png" class="imageTabl" alt="">
+            <div class="texttabl">
+              <h3 class="titretabl">Protectpeople</h3>
+              <p> Protectpeople finance la solidarité nationale. Nous appliquons le principe édifié par ... </p>
+            </div>
+          </div>
+          <a href="article.php?id=2" class="button">Lire la suite</a>
         </th>
       </tr>
       <tr>
         <th>
-          <img src="IMG/formation_co.png" class="imageTabl" alt="">
-          Formation&co Formation&co est une association française présente sur tout le territoire ...
-          <p><a href="article.php?id=1">Lire la suite</a></p>
+          <div class="container">
+            <img src="IMG/formation_co.png" class="imageTabl" alt="">
+            <div class="texttabl">
+              <h3 class="titretabl">Formation & co </h3>
+              <p>Formation&co Formation&co est une association française présente sur tout le territoire ...</p>
+            </div>
+          </div>
+          <a href="article.php?id=1" class="button">Lire la suite</a>
         </th>
       </tr>
     </table>

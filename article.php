@@ -39,7 +39,7 @@ if (!isset($_SESSION['loggedin'])) {
 		</head>
 		<body>
 			<?php include("header.php"); ?>
-			<img src="<?= $picture ?> " class="imageTabl" alt="">
+			<img src="<?= $picture ?> " class="imgArticle" alt="">
 			<div class="articles">
 				<h1><?= $titre ?></h1><br>
 				<p><?= $contenu ?></p>
