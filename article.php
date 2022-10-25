@@ -13,13 +13,13 @@ if (!isset($_SESSION['loggedin'])) {
 	   if($article->rowCount() == 1) {
 	      $article = $article->fetch();
 	      $id = $article['id'];
-	      $titre = $article['titre'];
-	      $contenu = $article['contenu'];
-		  $picture = $article['image'];
-	      $likes = $bdd->prepare('SELECT id FROM likes WHERE id_article = ?');
+	      $titre = $article['acteur'];
+	      $contenu = $article['description'];
+		  $picture = $article['logo'];
+	      $likes = $bdd->prepare('SELECT id FROM likes WHERE id_acteur = ?');
 	      $likes->execute(array($id));
 	      $likes = $likes->rowCount();
-	      $dislikes = $bdd->prepare('SELECT id FROM dislikes WHERE id_article = ?');
+	      $dislikes = $bdd->prepare('SELECT id FROM dislikes WHERE id_acteur = ?');
 	      $dislikes->execute(array($id));
 	      $dislikes = $dislikes->rowCount();
 	   } else {
@@ -36,6 +36,7 @@ if (!isset($_SESSION['loggedin'])) {
 		<head>
 			<title>Articles</title>
 			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
 		</head>
 		<body>
 			<?php include("header.php"); ?>
@@ -60,44 +61,45 @@ if (!isset($_SESSION['loggedin'])) {
 	   $article->execute(array($getid));
 	   $article = $article->fetch();
 	   if(isset($_POST['submit_commentaire'])) {
-	      if(isset($_POST['commentaire']) AND !empty($_POST['commentaire'])) {
+	      if(isset($_POST['post']) AND !empty($_POST['post'])) {
 	         $pseudo = $_SESSION['name'];
-	         $commentaire = htmlspecialchars($_POST['commentaire']);
-	            $ins = $bdd->prepare('INSERT INTO commentaires (pseudo, commentaire, id_article) VALUES (?,?,?)');
+	         $commentaire = htmlspecialchars($_POST['post']);
+	            $ins = $bdd->prepare('INSERT INTO commentaires (id_user, post, id_acteur) VALUES (?,?,?)');
 	            $ins->execute(array($pseudo,$commentaire,$getid));
 	            $c_msg = "<span style='color:green'>Votre commentaire a bien été posté</span>";
 	      } else {
 	         $c_msg = "Erreur: Tous les champs doivent être complétés";
 	      }
 	   }
-	   $commentaires = $bdd->prepare('SELECT * FROM commentaires WHERE id_article = ? ORDER BY id DESC');
+	   $commentaires = $bdd->prepare('SELECT * FROM commentaires WHERE id_acteur = ? ORDER BY id DESC');
 	   $commentaires->execute(array($getid));
 	?>
 	<?php 
 	$username = $_SESSION['name'];
-	$showcomment = $bdd->prepare("SELECT count(*) FROM commentaires WHERE id_article = ? AND pseudo='$username' ");
+	$showcomment = $bdd->prepare("SELECT count(*) FROM commentaires WHERE id_acteur = ? AND id_user='$username' ");
 	$showcomment->execute([$id]);
 	$count = $showcomment->fetchColumn();
 	if($count<1){
 		?> 
 	<div class="Comm">
 		<form method="POST">
-			<textarea name="commentaire" placeholder="Nouveau commentaire"></textarea><br />
-			<input type="submit" value="Poster mon commentaire" name="submit_commentaire" />
+			<textarea name="post" placeholder="Nouveau commentaire"></textarea><br>
+			<input type="submit" value="Poster mon commentaire" name="submit_commentaire">
+		</form>
 	</div>
-		</form><?php } ?>
+	<?php } ?>
 	<?php 
-	$NombreCommentaire = $bdd->prepare("SELECT count(*) FROM commentaires WHERE id_article = ?");
+	$NombreCommentaire = $bdd->prepare("SELECT count(*) FROM commentaires WHERE id_acteur = ?");
 	$NombreCommentaire->execute([$id]);
 	$count = $NombreCommentaire->fetchColumn();
 	echo "<p class='NbrComm'> $count Commentaire(s)</p>"; 
 	?> 
 	<div class= "articles">
 		<?php if(isset($c_msg)) { echo $c_msg; } ?>
-		<br /><br />
+		<br><br>
 		<?php while($c = $commentaires->fetch()) { ?>
-			<div class="cadre articles"><b><?= $c['pseudo'] ?></b><br><i><?= $c['date'] ?></i><br><br><?= $c['commentaire'] ?><br /></div>
-			<?php } ?>
+		<div class="cadre articles"><b><?= $c['id_user'] ?></b><br><i><?= $c['date_add'] ?></i><br><br><?= $c['post'] ?><br /></div>
+		<?php } ?>
 	</div>
 	<?php
 	}

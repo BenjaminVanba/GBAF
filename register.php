@@ -10,6 +10,8 @@ $mdp = "";
 $mail = "";
 $Question = "";
 $Reponse = "";
+$Nom = "";
+$Prenom= "";
 
 
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
@@ -26,6 +28,12 @@ if (!empty($_POST)) {
 	}
 	if (strlen($post['username']) > 20 || strlen($post['username']) < 5) {
 		$error[] = 'le nom d\'utilisateur doit contenir entre 5 et 20 caractères';
+	}
+	if (!isset($post['Nom'])){
+		$error[]='Veuillez renseignez votre Nom ';
+	}
+	if (!isset($post['Prenom'])){
+		$error[]='Veuillez renseignez votre Prenom ';
 	}
 	if (!isset($post['Question'])){
 		$error[]='Veuillez choisir une question secrete ';
@@ -50,10 +58,10 @@ else{
 		if ($stmt->num_rows > 0) {
 			echo "<p class='stylephp'>Utilisateur déjà existant.</p>";
 		} else {
-	if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email,Question, Reponse ) VALUES (?, ?, ?, ?, ?)')) {
+	if ($stmt = $con->prepare('INSERT INTO accounts (username, Nom, Prenom, password, email,Question, Reponse ) VALUES (?, ?, ?, ?, ?, ?, ?)')) {
 		$password = password_hash($post['password'], PASSWORD_DEFAULT);
 		$Reponse = password_hash($post['Reponse'], PASSWORD_DEFAULT);
-		$stmt->bind_param('sssss', $post['username'],$password, $post['email'], $post['Question'],$Reponse);
+		$stmt->bind_param('sssssss', $post['username'],$post['Nom'],$post['Prenom'],$password, $post['email'], $post['Question'],$Reponse);
 		$stmt->execute();
 		echo "<p class='stylephp'>Enregistrement réussi , vous pouvez vous connecter.</p>";
 	} else {
@@ -70,12 +78,14 @@ else{
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="utf-8">
 		<title>Inscription</title>
 		<link href="Style/style.css" rel="stylesheet" type="text/css">
-		<img src="IMG/logoGBAF.jpg" class="img5">
+		<link rel="stylesheet" media="screen and (max-width: 1280px)" href="Style/smallres.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<img src="IMG/logoGBAF.jpg" class="img5" alt="logo">
 	</head>
 	<body>
 		<div class="register">
@@ -88,6 +98,14 @@ else{
 					<i class=""></i>
 				</label>
 				<input type="text" name="username" placeholder="Nom d'utilisateur" value="<?=$user;?>" id="username" required>
+				<label for="Nom">
+					<i class=""></i>
+				</label>
+				<input type="text" name="Nom" placeholder="Nom" value="<?=$Nom;?>" id="Nom" required>
+				<label for="Prenom">
+					<i class=""></i>
+				</label>
+				<input type="text" name="Prenom" placeholder="Prenom" value="<?=$Prenom;?>" id="Prenom" required>
 				<label for="password">
 					<i class=""></i>
 				</label>
@@ -97,7 +115,9 @@ else{
 				</label>
 				<input type="email" name="email" placeholder="Email" value="<?=$mail;?>" id="email" required>
 				<div class= "test55">
-				<label for="Question">Selectionnez une question secrete</label>
+				<label for="Question">
+					Selectionnez une question secrete
+				</label>
 				<i class=""></i>
 				<select name="Question">
 					<option value="Votre surnom etant enfant">Votre surnom etant enfant</option>

@@ -14,6 +14,7 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC');
     <title>Accueil</title>
 		<meta charset="utf-8">
 		<link href="Style/styleHome.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" media="screen and (max-width: 1280px)" href="Style/smallres.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
   <body>
@@ -30,12 +31,12 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC');
           <li>La banque Postale</li>
         </ul>
     </div>
-      <img src="IMG/Landscape.jpeg" class="img2" alt="">
+      <img src="IMG/Landscape.jpeg" class="img2" alt="Landscape">
       <table style="width:50%">
       <tr class="center">
         <th>
           <div class="container">
-            <img src="IMG/CDE.png" class="imageTabl" alt="">
+            <img src="IMG/CDE.png" class="imageTabl" alt="CDE">
             <div class ="texttabl">
               <h3 class="titretabl">Chambre Des Entrepreneurs</h3>
               <p> La CDE (Chambre Des Entrepreneurs) accompagne les entreprises dans leurs démarches de formation... </p>
@@ -47,7 +48,7 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC');
       <tr>
         <th> 
           <div class="container">
-            <img src="IMG/Dsa_france.png" class="imageTabl" alt="">
+            <img src="IMG/Dsa_france.png" class="imageTabl" alt="DSAFrance">
             <div class ="texttabl">
               <h3 class="titretabl">DSA France</h3>
               <p> Dsa France Dsa France accélère la croissance du territoire et s’engage avec les collectivités territoriales... </p>
@@ -59,7 +60,7 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC');
       <tr>
         <th>
           <div class="container">
-            <img src="IMG/protectpeople.png" class="imageTabl" alt="">
+            <img src="IMG/protectpeople.png" class="imageTabl" alt="Protectpeople">
             <div class="texttabl">
               <h3 class="titretabl">Protectpeople</h3>
               <p> Protectpeople finance la solidarité nationale. Nous appliquons le principe édifié par ... </p>
@@ -71,7 +72,7 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC');
       <tr>
         <th>
           <div class="container">
-            <img src="IMG/formation_co.png" class="imageTabl" alt="">
+            <img src="IMG/formation_co.png" class="imageTabl" alt="FormationCO">
             <div class="texttabl">
               <h3 class="titretabl">Formation & co </h3>
               <p>Formation&co Formation&co est une association française présente sur tout le territoire ...</p>

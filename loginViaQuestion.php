@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="utf-8">
 		<title>Question Secrete</title>
         <link href="Style/style.css" rel="stylesheet" type="text/css">
-		<img src="IMG/logoGBAF.jpg" class="img5">
+		<link rel="stylesheet" media="screen and (max-width: 1280px)" href="Style/smallres.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<img src="IMG/logoGBAF.jpg" class="img5" alt="logo">
 	</head>
 	<body>
 		<div class="login">
@@ -15,7 +17,9 @@
 				</label>
 				<input type="text" name="username" placeholder="Nom d'utilisateur" id="username" required>
 				<div class= "test55">
-				<label for="Question">Selectionnez votre question secrete</label>
+				<label for="Question">
+					Selectionnez votre question secrete
+				</label>
 				<i class=""></i>
 				<select name="Question">
 					<option value="Votre surnom etant enfant">Votre surnom etant enfant</option>
@@ -35,7 +39,6 @@
 			<p><a href="Mention.php">Mention légale</a></p>
 			<p><a href="Contact.php"> Contact</a></p>
 		</div>
-		
 		</footer>
 	</body>
 </html>
